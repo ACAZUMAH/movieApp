@@ -8,7 +8,10 @@ import { TabBarItem } from "./TabBarItem";
 const TabBarContent: React.FC = () => {
   const { navigateToTab } = useAppNavigationWithRef();
   return (
-    <View className="w-full h-20 bg-primary px-6 mb-4 rounded-full">
+    <View
+      className="absolute bg-[#0F0D23] left-4 right-4 bottom-9 rounded-full h-14
+      border border-[#0F0D23] overflow-hidden"
+    >
       <View className="flex flex-row justify-between items-center h-full">
         <TabBarItem
           label="Home"

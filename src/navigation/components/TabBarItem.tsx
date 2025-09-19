@@ -6,6 +6,7 @@ import {
   ImageSourcePropType,
   Text,
   TouchableOpacity,
+  View
 } from "react-native";
 import Conditional from "src/components/conditional/Conditional";
 import { images } from "src/constants/images";
@@ -37,15 +38,11 @@ export const TabBarItem: React.FC<TabBarItemProps> = ({
 
   return (
     <>
-      <TouchableOpacity
-        onPress={onPress}
-        accessibilityRole="button"
-        accessibilityState={isFocused ? { selected: true } : {}}
-      >
+      <TouchableOpacity onPress={onPress} activeOpacity={1}>
         <Conditional condition={isFocused}>
           <ImageBackground
             source={images.highlight}
-            className="flex flex-row w-full flex-1 min-w-[112px] min-h-14
+            className="flex flex-row w-full flex-1 min-w-[100px] min-h-14
         justify-center items-center rounded-full overflow-hidden"
           >
             <Image source={icon} tintColor="#151312" className="size-5" />
@@ -55,7 +52,9 @@ export const TabBarItem: React.FC<TabBarItemProps> = ({
           </ImageBackground>
         </Conditional>
         <Conditional condition={!isFocused}>
-          <Image source={icon} tintColor="#A8B5DB" className="size-5" />
+          <View className="size=full justify-center items-center rounded-full px-11">
+            <Image source={icon} tintColor="#A8B5DB" className="size-5" />
+          </View>
         </Conditional>
       </TouchableOpacity>
     </>

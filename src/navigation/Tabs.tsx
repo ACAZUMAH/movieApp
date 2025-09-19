@@ -17,29 +17,15 @@ export const TabsNavigator = () => {
         tabBar={() => <TabBarContent />}
         screenOptions={{
           headerShown: false,
-          tabBarShowLabel: true,
+          tabBarShowLabel: false,
         }}
       >
         <BottomTab.Screen
           name={AppRoutes.HOME}
           component={Home}
           options={{
-            title: "Home",
+            //title: "Home",
             headerShown: false,
-            // tabBarIcon: () => (
-            //   <>
-            //     <ImageBackground
-            //       source={images.highlight}
-            //       className="flex flex-row w-full flex-1 min-w-[112px] min-h-14 mt-4 justify-center items-center overflow-hidden rounded-full"
-            //     >
-            //       <Image
-            //         source={icons.home}
-            //         tintColor="#151312"
-            //         className="size-5"
-            //       />
-            //     </ImageBackground>
-            //   </>
-            // ),
           }}
         />
         <BottomTab.Screen name={AppRoutes.SEARCH} component={Search} />
