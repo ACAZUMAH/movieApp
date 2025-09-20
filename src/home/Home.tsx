@@ -8,6 +8,7 @@ import {
   View,
 } from "react-native";
 import Conditional from "src/components/conditional/Conditional";
+import { MovieCard } from "src/components/movie";
 import { SearchBar } from "src/components/searchBar";
 import { AppRoutes } from "src/constants";
 import { icons } from "src/constants/icons";
@@ -15,7 +16,6 @@ import { images } from "src/constants/images";
 import { useAppFetch } from "src/hooks/useAppFetch";
 import { useAppNavigation } from "src/hooks/useAppNavigation";
 import { fetchMovies } from "src/services";
-import { MovieCard } from "./components/MovieCard";
 
 export const Home = () => {
   const { navigateToTab } = useAppNavigation();
@@ -24,7 +24,11 @@ export const Home = () => {
   );
   return (
     <View className="flex-1 bg-primary">
-      <Image source={images.bg} className="absolute w-full z-0" />
+      <Image
+        source={images.bg}
+        className="absolute w-full z-0"
+        resizeMode="cover"
+      />
       <ScrollView
         className="flex-1 px-5"
         showsVerticalScrollIndicator={false}
@@ -34,7 +38,7 @@ export const Home = () => {
 
         <View className="flex-1 mt-4">
           <SearchBar
-            placeholder="Search movies, TV shows..."
+            placeholder="Search through 300+ movies online"
             onPress={() => navigateToTab(AppRoutes.SEARCH)}
           />
 

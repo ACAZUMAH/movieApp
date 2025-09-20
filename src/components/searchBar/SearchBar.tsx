@@ -5,11 +5,15 @@ import { icons } from "src/constants/icons";
 interface SearchBarProps {
   placeholder: string;
   onPress?: () => void;
+  search?: string;
+  onChangeText?: (text: string) => void;
 }
 
 export const SearchBar: React.FC<SearchBarProps> = ({
   onPress,
   placeholder,
+  search,
+  onChangeText,
 }) => {
   return (
     <View className="flex-row items-center bg-dark-200 rounded-full px-5 py-4">
@@ -22,8 +26,8 @@ export const SearchBar: React.FC<SearchBarProps> = ({
       <TextInput
         onPress={onPress}
         placeholder={placeholder}
-        value=""
-        onChangeText={() => {}}
+        value={search}
+        onChangeText={onChangeText}
         placeholderTextColor="#a8b5db"
         className="flex-1 ml-2 text-white"
       />

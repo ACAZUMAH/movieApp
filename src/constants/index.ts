@@ -5,4 +5,5 @@ export const AppRoutes = {
     SAVE: "Save",
     PROFILE: "Profile",
     TABS: "Tabs",
+    MOVIE: "Movie",
 }
