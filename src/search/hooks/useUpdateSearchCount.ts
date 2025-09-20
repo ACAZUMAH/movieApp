@@ -10,7 +10,7 @@ export const updateSearchCount = async (query: string, movie: Movie) => {
       tableId: `matrice`,
       queries: [Query.equal("searchTerm", query)],
     });
-
+    
     if(results.rows.length > 0){
         const existingMovie = results.rows[0];
         await database.updateRow({

@@ -27,7 +27,7 @@ export const Search = () => {
       } else {
         reset();
       }
-    }, 500);
+    }, 600);
 
     return () => clearTimeout(timeOutId);
   }, [search]);
