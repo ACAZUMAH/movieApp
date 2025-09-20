@@ -6,6 +6,7 @@ import { images } from "src/constants/images";
 import { useAppFetch } from "src/hooks/useAppFetch";
 import { fetchMovies } from "src/services";
 import { SearchHeader } from "./components/SearchHeader";
+import { MoviesEmpty } from "./components/moviesEmpty";
 
 export const Search = () => {
   const [search, setSearch] = React.useState("");
@@ -58,14 +59,13 @@ export const Search = () => {
             setSearch={setSearch}
           />
         }
-      />
-      {/* <ScrollView
-        className="flex-1 px-5"
+        ListEmptyComponent={
+          <Conditional condition={!loading && !error}>
+            <MoviesEmpty search={search} />
+          </Conditional>
+        }
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ minHeight: "100%", paddingBottom: 10 }}
-      >
-        <Image source={icons.logo} className="w-12 h-10 mt-20 mx-auto"/>
-      </ScrollView> */}
+      />
     </View>
   );
 };
