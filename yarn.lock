@@ -3405,6 +3405,11 @@ expo-constants@~18.0.8:
     "@expo/config" "~12.0.8"
     "@expo/env" "~2.0.7"
 
+expo-file-system@18.*.*:
+  version "18.1.11"
+  resolved "https://registry.yarnpkg.com/expo-file-system/-/expo-file-system-18.1.11.tgz#a563c715c4bb5c18729d6d104e8c6cdfbd383e69"
+  integrity sha512-HJw/m0nVOKeqeRjPjGdvm+zBi5/NxcdPf8M8P3G2JFvH5Z8vBWqVDic2O58jnT1OFEy0XXzoH9UqFu7cHg9DTQ==
+
 expo-file-system@~19.0.14:
   version "19.0.14"
   resolved "https://registry.yarnpkg.com/expo-file-system/-/expo-file-system-19.0.14.tgz#1169fd9fcba8a5f1ef8e3c232ef8c62274ac4803"
@@ -5659,6 +5664,14 @@ react-is@^19.1.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-19.1.1.tgz#038ebe313cf18e1fd1235d51c87360eb87f7c36a"
   integrity sha512-tr41fA15Vn8p4X9ntI+yCyeGSf1TlYaY5vlTZfQmeLBrFo3psOPX6HhTDnFNL9uj3EhP0KAQ80cugCl4b4BERA==
 
+react-native-appwrite@^0.13.0:
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/react-native-appwrite/-/react-native-appwrite-0.13.0.tgz#014d9c1a09fa182832bbfbb4ea353e17b762fc7b"
+  integrity sha512-azglur0tFgtar4x14ZJPMVZ8nyygWdzYEYQRnHE/4xvq3TsvH7D4gJeq5HQXQ6ANg896TSDihdkUo6u3yLenCw==
+  dependencies:
+    expo-file-system "18.*.*"
+    react-native ">=0.76.7 <1.0.0"
+
 react-native-css-interop@0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/react-native-css-interop/-/react-native-css-interop-0.2.0.tgz#0a437cbbf30250a37c1e10b01aaab28b20947f3d"
@@ -5722,6 +5735,13 @@ react-native-screens@^4.16.0:
     react-native-is-edge-to-edge "^1.2.1"
     warn-once "^0.1.0"
 
+react-native-url-polyfill@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-url-polyfill/-/react-native-url-polyfill-2.0.0.tgz#db714520a2985cff1d50ab2e66279b9f91ffd589"
+  integrity sha512-My330Do7/DvKnEvwQc0WdcBnFPploYKp9CYlefDXzIdEaA+PAhDYllkvGeEroEzvc4Kzzj2O4yVdz8v6fjRvhA==
+  dependencies:
+    whatwg-url-without-unicode "8.0.0-3"
+
 react-native-web@~0.21.0:
   version "0.21.1"
   resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.21.1.tgz#ba36a42f02a19da0cfdb70f6f963acaede4a7b3c"
@@ -5753,7 +5773,7 @@ react-native-worklets@0.5.1:
     convert-source-map "^2.0.0"
     semver "7.7.2"
 
-react-native@0.81.4:
+react-native@0.81.4, "react-native@>=0.76.7 <1.0.0":
   version "0.81.4"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.81.4.tgz#d5e9d0a71ed2e80a550a6c358f2ce3ddb6f5b119"
   integrity sha512-bt5bz3A/+Cv46KcjV0VQa+fo7MKxs17RCcpzjftINlen4ZDUl0I6Ut+brQ2FToa5oD0IB0xvQHfmsg2EDqsZdQ==

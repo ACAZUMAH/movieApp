@@ -7,6 +7,7 @@ import { useAppFetch } from "src/hooks/useAppFetch";
 import { fetchMovies } from "src/services";
 import { SearchHeader } from "./components/SearchHeader";
 import { MoviesEmpty } from "./components/moviesEmpty";
+import { updateSearchCount } from "./hooks/useUpdateSearchCount";
 
 export const Search = () => {
   const [search, setSearch] = React.useState("");
@@ -16,9 +17,13 @@ export const Search = () => {
   );
 
   React.useEffect(() => {
+  
     const timeOutId = setTimeout(async () => {
       if (search.trim()) {
         await refetch();
+        if (data?.length > 0 && data?.[0]) {
+            await updateSearchCount(search, data?.[0]);
+        }
       } else {
         reset();
       }
@@ -33,7 +38,6 @@ export const Search = () => {
         className="absolute w-full z-0"
         resizeMode="cover"
       />
-      {/* <Image source={icons.logo} className="w-12 h-10 mt-20 mx-auto" /> */}
       <FlatList
         data={data}
         renderItem={({ item }) => (
