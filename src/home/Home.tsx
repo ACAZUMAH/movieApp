@@ -16,9 +16,16 @@ import { images } from "src/constants/images";
 import { useAppFetch } from "src/hooks/useAppFetch";
 import { useAppNavigation } from "src/hooks/useAppNavigation";
 import { fetchMovies } from "src/services";
+import { Trending } from "./components/Trending";
+import { useGetPopularMovies } from "./hooks/useGetPopularMovies";
 
 export const Home = () => {
   const { navigateToTab } = useAppNavigation();
+  const {
+    data: TrendingMovies,
+    loading: loadingTrending,
+    error: trendingError,
+  } = useAppFetch(() => useGetPopularMovies());
   const { data, loading, error } = useAppFetch(() =>
     fetchMovies({ query: "" })
   );
@@ -42,7 +49,11 @@ export const Home = () => {
             onPress={() => navigateToTab(AppRoutes.SEARCH)}
           />
 
-          <Conditional condition={loading}>
+          <Conditional condition={Boolean(TrendingMovies)}>
+            <Trending movies={TrendingMovies} />
+          </Conditional>
+
+          <Conditional condition={loading || loadingTrending}>
             <ActivityIndicator
               size="large"
               color="#0000ff"
@@ -50,9 +61,12 @@ export const Home = () => {
             />
           </Conditional>
 
-          <Conditional condition={Boolean(error)}>
+          <Conditional condition={Boolean(error) || Boolean(trendingError)}>
             <Text className="text-white mt-4 text-center">
-              Error: {error?.message || "Something went wrong"}
+              Error:{" "}
+              {error?.message ||
+                trendingError?.message ||
+                "Something went wrong"}
             </Text>
           </Conditional>
 

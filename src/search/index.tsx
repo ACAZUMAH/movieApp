@@ -17,13 +17,9 @@ export const Search = () => {
   );
 
   React.useEffect(() => {
-  
     const timeOutId = setTimeout(async () => {
       if (search.trim()) {
         await refetch();
-        if (data?.length > 0 && data?.[0]) {
-            await updateSearchCount(search, data?.[0]);
-        }
       } else {
         reset();
       }
@@ -31,6 +27,16 @@ export const Search = () => {
 
     return () => clearTimeout(timeOutId);
   }, [search]);
+
+  React.useEffect(() => {
+    const update = async () => {
+      if (data.length > 0 && search.trim()) {
+        await updateSearchCount(search, data[0]);
+      }
+    };
+    update();
+  }, [data]);
+
   return (
     <View className="flex-1 bg-primary">
       <Image
