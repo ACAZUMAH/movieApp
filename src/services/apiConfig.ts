@@ -1,3 +1,5 @@
+import { MovieDetails } from "src/interfaces";
+
 export const API_CONFIG = {
   BASE_URL: "https://api.themoviedb.org/3",
   API_KEY: process.env.EXPO_PUBLIC_MOVIE_API_KEY,
@@ -21,8 +23,34 @@ export const fetchMovies = async ({ query }: { query: string }) => {
     // @ts-ignore
     throw new Error("Failed to fetch movies", response.statusText);
   }
-  
+
   const data = await response.json();
 
   return data.results;
+};
+
+export const fetchMovieDetails = async (
+  movieId: string
+): Promise<MovieDetails> => {
+  try {
+    const response = await fetch(
+      `${API_CONFIG.BASE_URL}/movie/${movieId}?api_key=${API_CONFIG.API_KEY}`,
+      {
+        method: "GET",
+        headers: API_CONFIG.headers,
+      }
+    );
+
+    if (!response.ok) {
+      // @ts-ignore
+      throw new Error("Failed to fetch movie details", response.statusText);
+    }
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error("Error fetching movie details:", error);
+    throw error;
+  }
 };

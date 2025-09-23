@@ -26,6 +26,7 @@ export const Home = () => {
     loading: loadingTrending,
     error: trendingError,
   } = useAppFetch(() => useGetPopularMovies());
+  
   const { data, loading, error } = useAppFetch(() =>
     fetchMovies({ query: "" })
   );

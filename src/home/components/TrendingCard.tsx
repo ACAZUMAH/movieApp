@@ -1,7 +1,9 @@
 import MaskedView from "@react-native-masked-view/masked-view";
 import React from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
+import { AppRoutes } from "src/constants";
 import { images } from "src/constants/images";
+import { useAppNavigation } from "src/hooks/useAppNavigation";
 import { TrendingMovie } from "src/interfaces";
 
 interface TrendingCardProps {
@@ -10,8 +12,12 @@ interface TrendingCardProps {
 }
 
 const TrendingCard: React.FC<TrendingCardProps> = ({ movie, index }) => {
+  const { navigate } = useAppNavigation();
   return (
-    <TouchableOpacity className="w-32 relative pl-5">
+    <TouchableOpacity
+      className="w-32 relative pl-5"
+      onPress={() => navigate(AppRoutes.MOVIE, { id: movie.movie_id })}
+    >
       <Image
         source={{ uri: movie.poster_url }}
         className="w-32 h-48 rounded-lg"
@@ -31,9 +37,11 @@ const TrendingCard: React.FC<TrendingCardProps> = ({ movie, index }) => {
         </MaskedView>
       </View>
       <View>
-        <Text className="text-md font-bold text-light-200 mt-2" numberOfLines={1}>
-
-        {movie.title}
+        <Text
+          className="text-md font-bold text-light-200 mt-2"
+          numberOfLines={1}
+        >
+          {movie.title}
         </Text>
       </View>
     </TouchableOpacity>
